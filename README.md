@@ -47,7 +47,7 @@ Results are written to **JSON** (timestamped snapshots), **CSV** (append-mode ti
 ### Install
 
 ```bash
-git clone https://github.com/<your-username>/loosh-farm.git
+git clone https://github.com/jpcostan/loosh-farm.git
 cd loosh-farm
 python -m venv .venv
 source .venv/bin/activate
