@@ -1,0 +1,38 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "loosh-farm"
+version = "1.0.0"
+description = "Estimate the emotional temperature of the internet"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+dependencies = [
+    "click>=8.1",
+    "rich>=13.0",
+    "feedparser>=6.0",
+    "requests>=2.31",
+    "beautifulsoup4>=4.12",
+    "lxml>=5.0",
+    "vaderSentiment>=3.3.2",
+    "nltk>=3.8",
+    "pyyaml>=6.0",
+]
+
+[project.optional-dependencies]
+deep = [
+    "transformers>=4.36",
+    "torch>=2.1",
+]
+dev = [
+    "pytest>=7.4",
+    "pytest-mock>=3.12",
+]
+
+[project.scripts]
+loosh-farm = "src.main:cli"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]

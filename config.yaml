@@ -1,0 +1,103 @@
+# loosh-farm configuration
+
+# Analysis mode: "lightweight" (VADER only, fast) or "deep" (transformers, slower but more accurate)
+analysis_mode: lightweight
+
+# Maximum items to collect per source
+max_items_per_source: 100
+
+# Request settings
+request_timeout: 15
+max_retries: 3
+retry_delay: 2
+rate_limit_delay: 1.0
+
+# Source weights for Loosh Index calculation (must sum to 1.0)
+source_weights:
+  rss_news: 0.35
+  reddit: 0.30
+  rss_tech: 0.15
+  rss_world: 0.20
+
+# RSS Feed sources
+rss_feeds:
+  news:
+    - url: "https://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml"
+      name: "NYT Homepage"
+    - url: "https://feeds.bbci.co.uk/news/rss.xml"
+      name: "BBC News"
+    - url: "https://rss.cnn.com/rss/edition.rss"
+      name: "CNN"
+    - url: "https://feeds.reuters.com/reuters/topNews"
+      name: "Reuters Top"
+    - url: "http://feeds.abcnews.com/abcnews/topstories"
+      name: "ABC News"
+    - url: "https://www.aljazeera.com/xml/rss/all.xml"
+      name: "Al Jazeera"
+  tech:
+    - url: "https://news.ycombinator.com/rss"
+      name: "Hacker News"
+    - url: "https://www.reddit.com/r/technology/.rss"
+      name: "r/technology RSS"
+    - url: "https://feeds.arstechnica.com/arstechnica/index"
+      name: "Ars Technica"
+    - url: "https://www.theverge.com/rss/index.xml"
+      name: "The Verge"
+  world:
+    - url: "https://feeds.bbci.co.uk/news/world/rss.xml"
+      name: "BBC World"
+    - url: "https://rss.nytimes.com/services/xml/rss/nyt/World.xml"
+      name: "NYT World"
+    - url: "https://www.theguardian.com/world/rss"
+      name: "Guardian World"
+
+# Reddit public JSON endpoints (no auth required)
+reddit:
+  subreddits:
+    - "worldnews"
+    - "news"
+    - "politics"
+    - "UpliftingNews"
+    - "technology"
+    - "science"
+    - "AskReddit"
+    - "todayilearned"
+  sort: "hot"
+  limit: 50
+
+# Output settings
+output:
+  directory: "output"
+  json: true
+  csv: true
+  console: true
+
+# Emotion categories to track
+emotions:
+  - joy
+  - anger
+  - fear
+  - sadness
+  - surprise
+  - disgust
+  - trust
+  - anticipation
+
+# Loosh Index parameters
+loosh_index:
+  # Weights for how each emotion contributes to the index
+  # Negative emotions increase the index, positive decrease it
+  emotion_polarity:
+    joy: -1.0
+    anger: 1.5
+    fear: 1.8
+    sadness: 1.2
+    surprise: 0.3
+    disgust: 1.0
+    trust: -0.8
+    anticipation: 0.2
+  # Scale: 0-100
+  scale_min: 0
+  scale_max: 100
+  # Baseline (neutral emotional state maps to this value)
+  baseline: 50

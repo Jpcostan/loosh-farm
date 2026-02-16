@@ -1,0 +1,72 @@
+# Python bytecode
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyo
+
+# Distribution / packaging
+*.egg-info/
+*.egg
+dist/
+build/
+sdist/
+wheels/
+*.whl
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# IDE / editors
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.project
+.settings/
+.classpath
+*.sublime-project
+*.sublime-workspace
+
+# OS files
+.DS_Store
+.DS_Store?
+._*
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Claude Code
+.claude/
+
+# Environment / secrets
+.env
+.env.*
+*.pem
+*.key
+
+# Output (generated at runtime)
+output/
+
+# pytest / testing
+.pytest_cache/
+htmlcov/
+.coverage
+.coverage.*
+coverage.xml
+*.cover
+
+# NLTK data (downloaded at runtime)
+nltk_data/
+
+# Transformer model cache
+.cache/
+
+# Jupyter (if used later)
+.ipynb_checkpoints/
+
+# Logs
+*.log
